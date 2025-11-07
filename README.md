@@ -10,7 +10,7 @@ Nganya Split is a simple app that simulates and automates this process.
 
 Set Target: The vehicle owner sets their required daily threshold (e.g., KES 5,000).
 
-Receive Payments: The driver receives passenger fares using the Kopo Kopo (K2 Connect) SDK.
+Receive Payments: The driver receives passenger fares using the Kopo Kopo (K2 Connect) SDK or Cashia API.
 
 Automated Split: The app's logic automatically allocates payments.
 
@@ -25,6 +25,8 @@ Tech Stack
 Flutter: For the cross-platform mobile UI.
 
 Kopo Kopo (K2 Connect) SDK: To initiate a live STK Push payment bottom sheet (using the Sandbox environment).
+
+Cashia API: To initiate a live payment request (using the Sandbox environment).
 
 Hydrated Bloc: For "serverless" state management. The app's entire state (totals, thresholds, logs) is saved to the device, so you can close and reopen the app without losing data.
 
@@ -54,7 +56,7 @@ Test Persistence: Close the app completely and reopen it. The dashboard will sti
 
 This is a HACKATHON PROTOTYPE and is NOT secure for production use.
 
-Insecure Keys: The Kopo Kopo Client ID, Client Secret, and API Key are hard-coded in the lib/bootstrap.dart file.
+Insecure Keys: The Kopo Kopo Client ID, Client Secret, and API Key are hard-coded in the lib/bootstrap.dart file. Also , the Cashia API key is hard-coded in the lib/services/cashia_service.dart file. In a real app, these must be stored securely on a backend server.
 
 Real-World App: In a production environment, all API keys and communication with Kopo Kopo must be handled by a secure backend server, which the app would communicate with.
 
