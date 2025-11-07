@@ -18,7 +18,6 @@ dependencies:
   http: ^1.5.0
   hydrated_bloc: ^10.1.1
   intl: ^0.20.2
-  k2_connect_flutter: ^1.0.0
   path_provider: ^2.1.5
 
 dev_dependencies:

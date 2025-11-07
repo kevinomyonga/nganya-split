@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:k2_connect_flutter/k2_connect_flutter.dart';
 import 'package:nganya_split/home/cubit/cubit.dart';
+import 'package:nganya_split/home/services/cashia_service.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -185,7 +185,7 @@ class HomePage extends StatelessWidget {
                             });
 
                             // 2. Call the API
-                            final success = await _sendStkPush(
+                            final success = await CashiaService.sendStkPush(
                               phone: phoneController.text,
                               amount: amount,
                             );
@@ -227,52 +227,6 @@ class HomePage extends StatelessWidget {
         );
       },
     );
-  }
-
-  Future<bool> _sendStkPush({
-    required String phone,
-    required double amount,
-  }) async {
-    try {
-      // 1. Get access token
-      final tokenService = K2ConnectFlutter.tokenService();
-
-      final tokenResponse = await tokenService.requestAccessToken();
-      print('TOKEN: $tokenResponse');
-      final accessToken = tokenResponse.accessToken;
-
-      // 2. Build STK request
-      final stkRequest = StkPushRequest(
-        tillNumber: 'K12345', // ✅ replace with YOUR TILL
-        subscriber: Subscriber(
-          phoneNumber: phone.startsWith('0')
-              ? '254${phone.substring(1)}'
-              : phone,
-        ),
-        amount: Amount(
-          value: amount.toStringAsFixed(2),
-        ),
-        callbackUrl: 'https://kevinomyonga.com',
-        accessToken: accessToken,
-        metadata: {
-          'source': 'nganya-split',
-          'amount': amount,
-        },
-      );
-
-      // 3. Make request
-      final stkService = K2ConnectFlutter.stkService();
-
-      final locationUrl = await stkService.requestPayment(
-        stkPushRequest: stkRequest,
-      );
-
-      print('✅ STK push initiated. Status URL: $locationUrl');
-      return true;
-    } catch (e) {
-      print('❌ STK error: $e');
-      return false;
-    }
   }
 
   // --- END NEW ---
