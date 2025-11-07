@@ -1,0 +1,33 @@
+name: nganya_split
+description: A Flutter App Made For The Kopo Kopo K2 Connect SDK Hackathon At FlutterConKe 2025
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+  flutter: ^3.35.0
+
+dependencies:
+  bloc: ^9.0.1
+  equatable: ^2.0.7
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.1
+  flutter_localizations:
+    sdk: flutter
+  http: ^1.5.0
+  hydrated_bloc: ^10.1.1
+  intl: ^0.20.2
+  k2_connect_flutter: ^1.0.0
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  bloc_test: ^10.0.0
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  very_good_analysis: ^10.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true
