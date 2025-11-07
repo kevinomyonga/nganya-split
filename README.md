@@ -1,6 +1,6 @@
 # nganya-split
 
-A Flutter App Prototype Made For The Kopo Kopo K2 Connect SDK Hackathon At FlutterConKe 2025 demonstrating automated payment splits for matatu (nganya) drivers using the Kopo Kopo SDK.
+A Flutter App Prototype Made For The Kopo Kopo and Cashia Hackathon At FlutterConKe 2025 demonstrating automated payment splits for matatu (nganya) drivers using the Kopo Kopo K2 Connect Flutter SDK and Cashia API.
 
 The Core Concept
 
